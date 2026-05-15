@@ -9,7 +9,7 @@ This repository contains the simulation code used to generate every
 figure in the accompanying manuscript:
 
 >Neural Network Control of Electric Field Induced Gene Regulatory
->Pathways with Significant Delays. 2026.
+>Pathways with Significant Delays. 2026.  
 >Nicholas A. Rondoni, Papri Dey, Ksenia Zlobina, Marcella M. Gomez.
 
 

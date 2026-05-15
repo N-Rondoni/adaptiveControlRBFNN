@@ -44,7 +44,7 @@ ABLATION_MODE = 'full';
 BAND_pct_val = 0.20;
 
 %% ==================== OUTPUT DIRECTORY ==================================
-output_dir ='C:/Users/nicho/Documents/MATLAB/T4_March/results_rbf_monte_carlo'; %<- make MC_seed_viewer match this. 
+output_dir = fullfile(pwd, 'results_rbf_Monte_Carlo'); % <- make MC_seed_viewer match this. 
 if ~exist(output_dir, 'dir'), mkdir(output_dir); end
 
 fprintf('Monte Carlo RBF Sweep — %d seeds × %d setpoints\n', num_seeds, num_setpoints);
@@ -683,6 +683,33 @@ for sp_i = 1:num_setpoints
         'HorizontalAlignment', 'center', 'FontSize', 18, 'FontWeight', 'bold');
 end
 savePlot(gcf, output_dir, 'MC_ss_nrmse_bar_chart');
+
+%% ---- Figure: Mean ± σ for some metrics ----
+figure('Color', 'w', 'Position', [120 120 1800 450]);
+sgtitle(sprintf('RBF Monte Carlo Summary  (N = %d seeds)', num_seeds), ...
+    'FontSize', 26, 'FontWeight', 'bold');
+
+metric_names  = {'Rise Time (h)', 'Overshoot (%)', 'SS NRMSE (%)'};
+metric_arrays = {MC_rise_time, MC_overshoot, MC_ss_nrmse};
+bar_colors    = {[0.3 0.6 0.9], [0.9 0.5 0.3],  [0.8 0.6 0.4]};
+
+for mi = 1:3
+    subplot(1, 3, mi);
+    m_vals = nanmean(metric_arrays{mi}, 1);
+    s_vals = nanstd(metric_arrays{mi}, 0, 1);
+    bar(categorical(sp_labels, sp_labels), m_vals, 'FaceColor', bar_colors{mi}, ...
+        'EdgeColor', 'k', 'LineWidth', 0.8);
+    hold on;
+    errorbar(1:num_setpoints, m_vals, s_vals, s_vals, ...
+        'k', 'LineStyle', 'none', 'LineWidth', 1.2, 'CapSize', 8);
+    xlabel('Setpoint (a.u.)', 'FontSize', 20);
+    title(metric_names{mi}, 'FontSize', 22);
+    grid on;
+    set(gca, 'FontSize', 22);
+end
+
+savePlot(gcf, output_dir, 'MC_all_metrics_bar_chart');
+
 
 %% ---- Figure: Median + IQR SS_NRMSE bar chart ----
 figure('Color', 'w', 'Position', [100 100 700 500]);

@@ -13,11 +13,9 @@ close all;
 % accompanying manuscript. 
 
 
-
-
-%% ---- Configuration (edit these to see particular run/seed) ----------------------------------------
+%% ---- Configuration (edit this to see particular run/seed) ----------------------------------------
 SEED = 70; % 70 good example for half ablation, seed 7 for full ablation. 
-MC_DIR = 'C:/Users/nicho/Documents/MATLAB/T4_March/results_rbf_monte_carlo'; %<- match what is used in RBF_Monte_Carlo
+MC_DIR = fullfile(pwd, 'results_rbf_Monte_Carlo');  % <- match what is used in RBF_Monte_Carlo
 %% ---- Load ---------------------------------------------------------------
 seed_file = fullfile(MC_DIR, sprintf('RBF_MC_seed%03d.mat', SEED));
 if ~exist(seed_file, 'file'), error('Not found: %s', seed_file); end

@@ -46,13 +46,13 @@ one can be run on its own without the others.
 
 | Script                               | Manuscript figure(s)                                                          |
 |--------------------------------------|-------------------------------------------------------------------------------|
-| `Open_loop.m`                        | Fig. 1 (open-loop T₄ response to EF bursts)                                  |
-| `RBF_no_noise.m`                     | Fig. 3 (noise-free setpoint sweep, NRMSE ≈ 3–5 %)                            |
-| `RBF_setpoint_sequence.m`            | Fig. 4 (sequential setpoints with warm-start)                                |
-| `RBF_measurement_noise.m`            | Fig. 5 (sensor-noise σ sweep at setpoint 22)                                 |
-| `Monte_Carlo/RBF_Monte_Carlo.m`      | Figs. 7, 8 (Monte Carlo summary, NRMSE swarm/box) and data backing Fig. 6    |
-| `Monte_Carlo/MC_seed_viewer.m`       | Fig. 6 (single Monte-Carlo seed in detail)                                   |
-| `Supplement_unstable_example.m`      | Supplement 4 (naive RBF — illustrates that the modifications are necessary)  |
+| `Open_loop.m`                        | Fig. 2 (open-loop T₄ response to EF bursts)                                   |
+| `RBF_no_noise.m`                     | Fig. 3 (noise-free setpoint sweep, NRMSE ≈ 3–5 %)                             |
+| `RBF_setpoint_sequence.m`            | Fig. 4 (sequential setpoints with warm-start)                                 |
+| `RBF_measurement_noise.m`            | Fig. 5 (sensor-noise σ sweep at setpoint 22)                                  |
+| `Monte_Carlo/RBF_Monte_Carlo.m`      | Figs. 7, 8 (Monte Carlo summary, NRMSE swarm/box) and data backing Fig. 6     |
+| `Monte_Carlo/MC_seed_viewer.m`       | Fig. 6 (single Monte-Carlo seed in detail)                                    |
+| `Supplement_unstable_example.m`      | Supplement S4 (naive RBF — illustrates that the modifications are necessary)  |
 
 ---
 

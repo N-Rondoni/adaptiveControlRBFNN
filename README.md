@@ -46,7 +46,7 @@ one can be run on its own without the others.
 
 | Script                               | Manuscript figure(s)                                                          |
 |--------------------------------------|-------------------------------------------------------------------------------|
-| `Open_loop.m`                        | Fig. 2 (open-loop T₄ response to EF bursts)                                   |
+| `Open_loop.m`                        | Fig. 1 (open-loop T₄ response to EF bursts)                                   |
 | `RBF_no_noise.m`                     | Fig. 3 (noise-free setpoint sweep, NRMSE ≈ 3–5 %)                             |
 | `RBF_setpoint_sequence.m`            | Fig. 4 (sequential setpoints with warm-start)                                 |
 | `RBF_measurement_noise.m`            | Fig. 5 (sensor-noise σ sweep at setpoint 22)                                  |

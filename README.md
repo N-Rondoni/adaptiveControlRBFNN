@@ -24,15 +24,15 @@ and a periodic unmodeled disturbance.
 ## Repository layout
 ```
 adaptiveControlRBFNN
-├── Open_loop.m                      % Open-loop response of the plant
-├── RBF_no_noise.m                   % Setpoint sweep, no noise
-├── RBF_setpoint_sequence.m          % Sequential setpoint tracking (warm-start)
-├── RBF_measurement_noise.m          % Sensor-noise sigma sweep
+├── Open_loop.m                   % Open-loop response of the plant
+├── RBF_no_noise.m                % Setpoint sweep, no noise
+├── RBF_setpoint_sequence.m       % Sequential setpoint tracking (warm-start)
+├── RBF_measurement_noise.m       % Sensor-noise sigma sweep
 ├── Monte_Carlo/
 │   ├── RBF_Monte_Carlo.m         % 100-seed Monte Carlo, all noise sources active
 │   └── MC_seed_viewer.m          % Re-plot a single Monte-Carlo seed
 └── Supplement/
-    ├── Supplement_unstable_example.m  % Naive RBF without stabilizing modifications
+    ├── unstable_example.m        % Naive RBF without stabilizing modifications
     ├── RBF_timing_study.m        % Wall clock per controller update, in the closed loop
     ├── RBF_N_sweep.m             % Update cost against RBF node count N
     ├── run_sensitivity_sweep.m   % One-at-a-time controller-parameter sweep, one setpoint
@@ -57,7 +57,7 @@ one can be run on its own without the others.
 | `RBF_measurement_noise.m`            | Fig. 5 (sensor-noise σ sweep at setpoint 22)                                  |
 | `Monte_Carlo/RBF_Monte_Carlo.m`      | Figs. 7, 8 (Monte Carlo summary, NRMSE swarm/box) and data backing Fig. 6     |
 | `Monte_Carlo/MC_seed_viewer.m`       | Fig. 6 (single Monte-Carlo seed in detail)                                    |
-| `Supplement/Supplement_unstable_example.m` | Supplement S4, Figs. S4, S5 (naive RBF — illustrates that the modifications are necessary) |
+| `Supplement/unstable_example.m`      | Supplement S4, Figs. S4, S5 (naive RBF — illustrates that the modifications are necessary) |
 | `Supplement/RBF_timing_study.m`      | Supplement S5, Table S8 (measured wall clock timings)                         |
 | `Supplement/RBF_N_sweep.m`           | Supplement S5, Fig. S6 (update cost against node count N)                     |
 | `Supplement/run_sensitivity_sweep.m` | Supplement S6, data for Fig. S7 (run once per setpoint)                       |

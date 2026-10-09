@@ -28,10 +28,15 @@ adaptiveControlRBFNN
 ├── RBF_no_noise.m                   % Setpoint sweep, no noise
 ├── RBF_setpoint_sequence.m          % Sequential setpoint tracking (warm-start)
 ├── RBF_measurement_noise.m          % Sensor-noise sigma sweep
-├── Supplement_unstable_example.m    % Naive RBF without stabilizing modifications
-└── Monte_Carlo/
-    ├── RBF_Monte_Carlo.m         % 100-seed Monte Carlo, all noise sources active
-    └── MC_seed_viewer.m          % Re-plot a single Monte-Carlo seed
+├── Monte_Carlo/
+│   ├── RBF_Monte_Carlo.m         % 100-seed Monte Carlo, all noise sources active
+│   └── MC_seed_viewer.m          % Re-plot a single Monte-Carlo seed
+└── Supplement/
+    ├── Supplement_unstable_example.m  % Naive RBF without stabilizing modifications
+    ├── RBF_timing_study.m        % Wall clock per controller update, in the closed loop
+    ├── RBF_N_sweep.m             % Update cost against RBF node count N
+    ├── run_sensitivity_sweep.m   % One-at-a-time controller-parameter sweep, one setpoint
+    └── parse_sensitivity_all.m   % Combines the per-setpoint sweeps into one figure
 ```
 
 Each script is self-contained: the plant ODE, EF burst-averaging
@@ -52,7 +57,11 @@ one can be run on its own without the others.
 | `RBF_measurement_noise.m`            | Fig. 5 (sensor-noise σ sweep at setpoint 22)                                  |
 | `Monte_Carlo/RBF_Monte_Carlo.m`      | Figs. 7, 8 (Monte Carlo summary, NRMSE swarm/box) and data backing Fig. 6     |
 | `Monte_Carlo/MC_seed_viewer.m`       | Fig. 6 (single Monte-Carlo seed in detail)                                    |
-| `Supplement_unstable_example.m`      | Supplement S4 (naive RBF — illustrates that the modifications are necessary)  |
+| `Supplement/Supplement_unstable_example.m` | Supplement S4, Figs. S4, S5 (naive RBF — illustrates that the modifications are necessary) |
+| `Supplement/RBF_timing_study.m`      | Supplement S5, Table S8 (measured wall clock timings)                         |
+| `Supplement/RBF_N_sweep.m`           | Supplement S5, Fig. S6 (update cost against node count N)                     |
+| `Supplement/run_sensitivity_sweep.m` | Supplement S6, data for Fig. S7 (run once per setpoint)                       |
+| `Supplement/parse_sensitivity_all.m` | Supplement S6, Fig. S7 (controller-parameter sensitivity)                     |
 
 ---
 
@@ -62,6 +71,14 @@ All scripts are standalone, though `MC_seed_viewer.m`
 relies on the output of `RBF_Monte_Carlo.m`. The Monte Carlo
 scripts live in `Monte_Carlo/` and should be run from within
 that subfolder.
+
+The supplement scripts live in `Supplement/` and should likewise be
+run from within that subfolder. For Fig. S7, run
+`run_sensitivity_sweep.m` once for each setpoint (12, 16, 20, 25,
+set by `SETPOINT` at the top of the file), then run
+`parse_sensitivity_all.m`, which reads every `results_sensitivity_sp*`
+folder in the working directory. The two timing scripts should be run
+on an otherwise idle machine with no parallel pool.
 
 From the MATLAB prompt, with the repository folder on the path:
 ```matlab
@@ -94,6 +111,6 @@ The relevant per-script knobs sit at the top of each file:
 Default RNG seeds are set near the top (e.g. `RNGesus = 1` in some
 scripts; `seed_list = 1:100` in the Monte Carlo).
 
-Numerical parameter values match Tables 1–6 of the manuscript's
-Supplement 1. For noise ranges, `ABLATION_MODE = half` replicates the
-presented tables in supplement 1A, while `full` doubles these values.
+Numerical parameter values match Tables S1–S7 of the manuscript's
+Supplement S1. For noise ranges, `ABLATION_MODE = half` replicates the
+presented tables in Supplement S1-A, while `full` doubles these values.
